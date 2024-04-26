@@ -1,4 +1,6 @@
 from flask import Flask, request, redirect, session, render_template
+from datetime import datetime, timedelta
+import pytz
 import requests
 import os
 import base64
@@ -51,20 +53,38 @@ def liked_songs():
         return redirect("/login")
     headers = {"Authorization": f"Bearer {session['access_token']}"}
     response = requests.get("https://api.spotify.com/v1/me/tracks", headers=headers)
-    items = response.json().get('items', [])
+    items = response.json().get("items", [])
+
+    if "filter_recent" in request.args:
+        thirty_days_ago = datetime.now(pytz.utc) - timedelta(
+            days=30
+        )  # This is now an offset-aware datetime
+        items = [
+            item
+            for item in items
+            if datetime.strptime(item["added_at"], "%Y-%m-%dT%H:%M:%SZ").replace(
+                tzinfo=pytz.utc
+            )
+            > thirty_days_ago
+        ]
 
     songs = []
     for item in items:
-        track = item['track']
-        album = track['album']
-        songs.append({
-            'artist': ', '.join(artist['name'] for artist in track['artists']),
-            'title': track['name'],
-            'album_cover': album['images'][0]['url'] if album['images'] else None,
-            'year': album['release_date'][:4]  # Assuming the release_date is in YYYY-MM-DD format
-        })
+        track = item["track"]
+        album = track["album"]
+        songs.append(
+            {
+                "artist": ", ".join(artist["name"] for artist in track["artists"]),
+                "title": track["name"],
+                "album_cover": album["images"][0]["url"] if album["images"] else None,
+                "year": album["release_date"][
+                    :4
+                ],  # Assuming the release_date is in YYYY-MM-DD format
+                "added": item["added_at"][:7],
+            }
+        )
 
-    return render_template('liked_songs.html', songs=songs)
+    return render_template("liked_songs.html", songs=songs)
 
 
 if __name__ == "__main__":
