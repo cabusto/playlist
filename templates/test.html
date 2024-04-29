@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+</head>
+
+<body>
+    <script type="module">
+        import "https://js.supertab.co/v1/tab.js";
+        window.supertab.createPurchaseButton({
+            containerElement: document.getElementById("test-button"),
+            clientId: "client.2915d9d7-724e-44e1-9f5d-01f5dddf009e",
+            merchantName: "Playlist Generator",
+            merchantLogoUrl: "YOUR_LOGO_URL",
+            offeringId: "offering.d0dd46b7-304b-4f54-aa1b-2f4d430e5b67", // optional
+            onPurchaseCompleted: () => {
+                //insert your code to grant user access
+                console.log("Purchase completed!");
+            },
+            onPurchaseCanceled: () => {
+                //insert your code to handle when purchase is not completed
+                console.log("Purchase canceled!");
+            },
+            onError: () => {
+                //insert your code to handle an unexpected error
+                console.log("Purchase error!");
+            },
+        });
+    </script>
+    <h1>Welcome to the Test Page</h1>
+    <p id="test-button">This is a simple test page to demonstrate a Flask route.</p>
+</body>
+
+</html>
