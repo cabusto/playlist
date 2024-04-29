@@ -18,7 +18,7 @@
         }
 
         .background {
-            background-color: #1DB954;
+            background-color: #33be64;
             height: 100%;
             display: flex;
             justify-content: center;
@@ -82,14 +82,19 @@
             },
         });
     </script>
-    <h1>Spotify Liked Songs Viewer</h1>
-    <a href="/login">Login to Spotify</a>
+    <div class="background">
 
-    <div id="supertab">
-        Put this on your tab.
+        <button class="login-button" onclick="location.href='/login'">
+            <i class="fab fa-spotify"></i> Login with Spotify
+        </button>
+
+        <div id="supertab">
+
+        </div>
+
+        <a href="/test">Test</a>
+
     </div>
-
-    <a href="/test">Test</a>
 
 </body>
 
