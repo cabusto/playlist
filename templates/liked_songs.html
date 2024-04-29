@@ -34,9 +34,13 @@
     </script>
     <div class="container mt-5">
         <h1 class="mb-4">Liked Songs</h1>
-        <a href="/liked-songs?filter_recent=true" class="btn btn-primary mb-3" id="purchase-single-playlist">Generate
+
+        <a href="/liked-songs?filter_recent=true" class="btn btn-primary mb-3">Filter to last 30 days
             Playlist</a>
-        <div id=""></div>
+        <div class="container mt-4" id="purchase-single-playlist">
+            <p>Generate and sync this playlist for $0.25!</p>
+        </div>
+        
         <div class="row">
             {% for song in songs %}
             <div class="col-md-4 mb-4">
