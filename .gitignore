@@ -1,2 +1,5 @@
 .venv/
 .env
+__pycache__/app.cpython-312.pyc
+utils/output.py
+utils/__pycache__/output.cpython-312.pyc
