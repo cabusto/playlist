@@ -1,99 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify to Apple Music Converter</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .background {
+        background-color: #33be64;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .login-button {
+        background-color: #1ED760;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 30px;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .login-button:hover,
+    .login-button:focus {
+        background-color: #1DB954;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-button i {
+        margin-right: 10px;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .logo img {
+        width: 150px;
+    }
+</style>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Liked Songs</title>
-    <script src="https://unpkg.com/htmx.org"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .background {
-            background-color: #33be64;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .login-button {
-            background-color: #1ED760;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 30px;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .login-button:hover,
-        .login-button:focus {
-            background-color: #1DB954;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .login-button i {
-            margin-right: 10px;
-        }
-
-        .logo {
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 150px;
-        }
-    </style>
+    <title>Login with Spotify</title>
 </head>
 
 <body>
-    <script type="module">
-        import "https://js.supertab.co/v1/tab.js";
-        window.supertab.createPurchaseButton({
-            containerElement: document.getElementById("supertab"),
-            clientId: "client.2915d9d7-724e-44e1-9f5d-01f5dddf009e",
-            merchantName: "Playlist Generator",
-            merchantLogoUrl: "YOUR_LOGO_URL",
-            offeringId: "offering.d0dd46b7-304b-4f54-aa1b-2f4d430e5b67", // optional
-            onPurchaseCompleted: () => {
-                //insert your code to grant user access
-                console.log("Purchase completed!");
-            },
-            onPurchaseCanceled: () => {
-                //insert your code to handle when purchase is not completed
-                console.log("Purchase canceled!");
-            },
-            onError: () => {
-                //insert your code to handle an unexpected error
-                console.log("Purchase error!");
-            },
-        });
-    </script>
+
+
     <div class="background">
 
         <button class="login-button" onclick="location.href='/login'">
             <i class="fab fa-spotify"></i> Login with Spotify
         </button>
-
-        <div id="supertab">
-
-        </div>
-
-        <a href="/test">Test</a>
-
     </div>
 
 </body>
